@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        /* Style for the button */
+        .play-button {
+            position: absolute;
+            bottom: 2%; /* Adjust the top position */
+            right: 6.5%; /* Adjust the right position */
+            width: 80px;
+            height: 80px;
+            background-color: #5cb78f; /* background color */
+            border-radius: 60%; /* Rounded shape */
+            border: 4px solid #fff; /* White border */
+            border-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;            
+            z-index: 1001; /* Ensure the button is above the GIF */
+        }
+
+        .play-button:hover {
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+
+        .play-icon {
+            font-size: 70px;
+            color: #fff; /* White color for the play icon */
+            margin-left: 20%; 
+            margin-top: 4%;         
+        }
+
+        /* Style to make the video cover the entire page */
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000; /* Ensure the video is behind the button */
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire container */
+        }
+    </style>
+</head>
+<body>
+
+<div class="video-container">
+    <video autoplay muted >
+        <source src="StoryPage.mp4" type="video/mp4"> <!-- Video file source -->
+    </video>
+</div>
+
+<div class="play-button">
+    <span class="play-icon">▶</span> <!-- Play icon -->
+</div>
+
+<audio id="bgMusic" autoplay loop>
+    <source src="StoryPage.mp3" type="audio/mp3"> <!-- MP3 file source -->
+</audio>
+
+<script>
+    // Add a click event listener to the play button
+    document.querySelector('.play-button').addEventListener('click', function() {
+        window.location.href = 'index.html'; // Redirect to index.html
+    });
+</script>
+
+</body>
+</html>

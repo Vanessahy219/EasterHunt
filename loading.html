@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* Loading bar styles */
+        .loading-bar {
+            width: 50%; /* Shorter length */
+            max-width: 300px; /* Adjust as needed */
+            margin: 100px auto 40px; /* Added margin at the bottom to make space for the icon */
+            height: 40px; /* Increased thickness */
+            background-color: #f1f1f1; /* Light gray background */
+            border-radius: 20px; /* Rounded corners */
+            border: 4px solid #e0e0e0; /* Thicker border */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Drop shadow */
+            position: relative; /* Added for positioning the progress animation */
+        }
+
+        .loading-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #ffcc00; /* Yellow color for the loading bar fill */
+            border-radius: 20px; /* Rounded corners */
+            animation: progress 2s ease-in-out infinite; /* Animation for progress */
+        }
+
+        @keyframes progress {
+            0% {
+                width: 0;
+            }
+            50% {
+                width: 50%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Bunny icon */
+        .bunny-icon {
+            position: absolute;
+            top: 20px; /* Positioned above the loading bar */
+            left: 50%; /* Centered horizontally */
+            transform: translateX(-50%); /* Centered horizontally */
+            font-size: 48px; /* Increased font size */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="loading-bar">
+        <div class="loading-bar-fill"></div>
+    </div>
+    <div class="bunny-icon">🐰</div> <!-- Bunny icon above the bar -->
+
+    <audio id="bgMusic" autoplay loop>
+        <source src="HelloPage.mp3" type="audio/mp3"> <!-- MP3 file source -->
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Redirect to the main game page after loading is complete
+            setTimeout(function () {
+                window.location.href = "playbutton.html";
+            }, 2000); // Redirect after 2 seconds
+        });
+    </script>
+
+</body>
+
+</html>

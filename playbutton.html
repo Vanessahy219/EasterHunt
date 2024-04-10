@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Page</title>
+    <style>
+        /* Style for the button */
+        .play-button {
+            position: absolute;
+            bottom: 9%; /* Adjust the top position */
+            right: 43.5%; /* Adjust the right position */
+            width: 80px;
+            height: 80px;
+            display: none; /* Initially hide the button */
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;            
+            z-index: 1001; /* Ensure the button is above the GIF */
+        }
+
+        .play-button:hover {
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+
+        .play-icon {
+            font-size: 70px;
+            color: #e3c140; /* White color for the play icon */        
+        }
+
+        /* Style to make the video cover the entire page */
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000; /* Ensure the video is behind the button */
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire container */
+        }
+    </style>
+</head>
+<body>
+
+<div class="video-container">
+    <video autoplay muted id="videoPlayer">
+        <source src="HelloPage.mp4" type="video/mp4"> <!-- Video file source -->
+    </video>
+</div>
+
+<div class="play-button" id="playButton">
+    <span class="play-icon">▶</span> <!-- Play icon -->
+</div>
+
+<audio id="bgMusic" autoplay loop>
+    <source src="HelloPage.mp3" type="audio/mp3">
+</audio>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the video element
+        const video = document.getElementById('videoPlayer');
+        
+        // Get the play button element
+        const playButton = document.getElementById('playButton');
+
+        // Get the audio element
+        const bgMusic = document.getElementById('bgMusic');
+
+        // Add a click event listener to the play button
+        playButton.addEventListener('click', function() {
+            window.location.href = 'StoryPage.html'; 
+        });
+
+        // Display the play button after 1 second
+        setTimeout(() => {
+            playButton.style.display = 'flex';
+        }, 1000);
+
+        // Play background music when the page loads
+        bgMusic.play().then(() => {}).catch(error => {
+            console.log("Autoplay not allowed:", error);
+        });
+    });
+</script>
+
+</body>
+
+</html>
